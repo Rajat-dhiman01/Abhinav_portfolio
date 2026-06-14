@@ -57,8 +57,50 @@ const MEDIA: MediaItem[] = [
     title: "Sajde",
     height: "short",
   },
+  {
+    id: 7,
+    type: "youtube",
+    src: "https://www.youtube.com/embed/MPiNpkDYYXs?si=zdxZzeq2VvAgytud",
+    youtubeId: "MPiNpkDYYXs",
+    title: "O Meri Jaan — Abhinav Dhiman",
+    height: "medium",
+  },
+  {
+    id: 8,
+    type: "reel",
+    src: "https://res.cloudinary.com/dhysr3yfi/video/upload/v1781464754/O_Meri_Jaan_with_adnan_ahmad_rnzb09.mp4",
+    title: "O Meri Jaan",
+    height: "tall",
+  },
+  {
+    id: 9,
+    type: "photo",
+    src: "https://res.cloudinary.com/dhysr3yfi/image/upload/f_auto,q_auto/v1781465005/Had_a_great_gig_at_studioxodehradun_..._abhinavdhimanlive_studioxo_livemusic_3_ssvudz.jpg",
+    title: "Live at Studio XO Dehradun",
+    height: "tall",
+  },
+  {
+    id: 10,
+    type: "photo",
+    src: "https://res.cloudinary.com/dhysr3yfi/image/upload/f_auto,q_auto/v1781465005/Had_a_great_gig_at_studioxodehradun_..._abhinavdhimanlive_studioxo_livemusic_2_nyat8k.jpg",
+    title: "Studio XO Performance",
+    height: "medium",
+  },
+  {
+    id: 11,
+    type: "photo",
+    src: "https://res.cloudinary.com/dhysr3yfi/image/upload/f_auto,q_auto/v1781465005/Had_a_great_gig_at_studioxodehradun_..._abhinavdhimanlive_studioxo_livemusic_mumega.jpg",
+    title: "On Stage at Studio XO",
+    height: "short",
+  },
+  {
+    id: 12,
+    type: "photo",
+    src: "https://res.cloudinary.com/dhysr3yfi/image/upload/f_auto,q_auto/v1781465005/Had_a_great_gig_at_studioxodehradun_..._abhinavdhimanlive_studioxo_livemusic_4_w69ngh.jpg",
+    title: "Abhinav Dhiman Live",
+    height: "medium",
+  },
 ];
-
 const ASPECT_MAP = {
   tall: "aspect-[9/16]",
   medium: "aspect-[4/5]",
@@ -136,13 +178,11 @@ const ReelCard = ({ item, index, onClick }: { item: MediaItem; index: number; on
     </motion.div>
   );
 };
-
-// YOUTUBE CARD
-const YoutubeCard = ({ item, index, onClick }: { item: MediaItem; index: number; onClick: () => void }) => {
+// PHOTO CARD
+const PhotoCard = ({ item, index, onClick }: { item: MediaItem; index: number; onClick: () => void }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: false, margin: "-10%" });
   const [hovered, setHovered] = useState(false);
-  const thumbnail = `https://img.youtube.com/vi/${item.youtubeId}/maxresdefault.jpg`;
 
   return (
     <motion.div
@@ -157,9 +197,48 @@ const YoutubeCard = ({ item, index, onClick }: { item: MediaItem; index: number;
       whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
     >
       <img
-        src={thumbnail}
+        src={item.src}
         alt={item.title}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+        transition={{ duration: 0.25 }}
+        className="absolute bottom-0 left-0 right-0 p-4"
+      >
+        <p className="font-manrope text-sm text-white font-medium leading-snug">{item.title}</p>
+        <span className="text-xs text-white/50 font-manrope uppercase tracking-widest mt-1 block">Photo</span>
+      </motion.div>
+    </motion.div>
+  );
+};
+// YOUTUBE CARD
+const YoutubeCard = ({ item, index, onClick }: { item: MediaItem; index: number; onClick: () => void }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: false, margin: "-10%" });
+  const [hovered, setHovered] = useState(false);
+  const [thumbSrc, setThumbSrc] = useState(
+    `https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`
+  );
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+      className={`relative overflow-hidden rounded-xl cursor-pointer group bg-secondary ${ASPECT_MAP[item.height]}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
+      whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+    >
+      <img
+        src={thumbSrc}
+        alt={item.title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        onError={() => setThumbSrc(`https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`)}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm rounded-full px-2.5 py-1">
@@ -270,6 +349,14 @@ const Lightbox = ({
               className="w-full h-full"
             />
           </div>
+        ) : item.type === "photo" ? (
+          <div className="w-full rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src={item.src}
+              alt={item.title}
+              className="w-full h-auto object-contain max-h-[80vh]"
+            />
+          </div>
         ) : (
           <div className="aspect-[9/16] w-full max-h-[85vh] rounded-xl overflow-hidden shadow-2xl">
             <video
@@ -373,26 +460,8 @@ const Gallery = () => {
           </button>
         ))}
       </motion.div>
-
-      {/* Photos coming soon */}
-      {activeTab === "photo" && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col items-center justify-center py-32 text-center px-6"
-        >
-          <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mb-6">
-            <svg className="w-7 h-7 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <p className="font-cinzel text-cream text-xl mb-2">Photos Coming Soon</p>
-          <p className="font-manrope text-muted text-sm">Performance photos will be added shortly.</p>
-        </motion.div>
-      )}
-
-      {/* Masonry Grid */}
-      {activeTab !== "photo" && (
+{/* Masonry Grid */}
+      {(activeTab !== "photo" || filtered.length > 0) && (
         <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
@@ -407,8 +476,10 @@ const Gallery = () => {
                 <div key={item.id} className="break-inside-avoid mb-4">
                   {item.type === "reel" ? (
                     <ReelCard item={item} index={index} onClick={() => openLightbox(index)} />
-                  ) : (
+                  ) : item.type === "youtube" ? (
                     <YoutubeCard item={item} index={index} onClick={() => openLightbox(index)} />
+                  ) : (
+                    <PhotoCard item={item} index={index} onClick={() => openLightbox(index)} />
                   )}
                 </div>
               ))}
