@@ -92,6 +92,8 @@ const ReelCard = ({ item, index, onClick }: { item: MediaItem; index: number; on
     }
   }, [hovered, isInView]);
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <motion.div
       ref={cardRef}
@@ -99,11 +101,11 @@ const ReelCard = ({ item, index, onClick }: { item: MediaItem; index: number; on
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
       className={`relative overflow-hidden rounded-xl cursor-pointer group bg-secondary ${ASPECT_MAP[item.height]}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => !isMobile && setHovered(true)}
+      onMouseLeave={() => !isMobile && setHovered(false)}
       onClick={onClick}
       style={{ willChange: "transform" }}
-      whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+      whileHover={{ scale: isMobile ? 1 : 1.02, transition: { duration: 0.3 } }}
     >
       <video
         ref={videoRef}
@@ -114,34 +116,23 @@ const ReelCard = ({ item, index, onClick }: { item: MediaItem; index: number; on
         preload="metadata"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={hovered ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-        transition={{ duration: 0.2 }}
-        className="absolute inset-0 flex items-center justify-center"
-      >
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      {/* Play icon — always visible on mobile, hover on desktop */}
+      <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${hovered || isMobile ? "opacity-100" : "opacity-0"}`}>
         <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
           <Play className="w-6 h-6 text-white fill-white ml-1" />
         </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-        transition={{ duration: 0.25 }}
-        className="absolute bottom-0 left-0 right-0 p-4"
-      >
+      </div>
+      <div className={`absolute bottom-0 left-0 right-0 p-4 transition-opacity duration-200 ${hovered || isMobile ? "opacity-100" : "opacity-0"}`}>
         <p className="font-manrope text-sm text-white font-medium leading-snug">{item.title}</p>
         <span className="text-xs text-white/50 font-manrope uppercase tracking-widest mt-1 block">Reel</span>
-      </motion.div>
-      {hovered && (
-        <button
-          onClick={(e) => { e.stopPropagation(); setMuted(!muted); }}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
-        >
-          {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-        </button>
-      )}
+      </div>
+      <button
+        onClick={(e) => { e.stopPropagation(); setMuted(!muted); }}
+        className={`absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors ${hovered || isMobile ? "opacity-100" : "opacity-0"}`}
+      >
+        {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+      </button>
     </motion.div>
   );
 };
@@ -282,11 +273,21 @@ const Lightbox = ({
         ) : (
           <div className="aspect-[9/16] w-full max-h-[85vh] rounded-xl overflow-hidden shadow-2xl">
             <video
+              key={item.src}
               src={item.src}
-              autoPlay
               controls
               playsInline
+              muted={false}
               className="w-full h-full object-cover"
+              ref={(el) => {
+                if (el) {
+                  el.muted = false;
+                  const playPromise = el.play();
+                  if (playPromise !== undefined) {
+                    playPromise.catch(() => {});
+                  }
+                }
+              }}
             />
           </div>
         )}

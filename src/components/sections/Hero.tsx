@@ -23,7 +23,7 @@ const Hero = () => {
         transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
       >
         <img
-          src="/images/abhinachero.png"
+         src="https://res.cloudinary.com/dhysr3yfi/image/upload/f_auto,q_auto,w_1200/v1781464152/abhinachero_lnll1p.png"
           alt="Abhinav Dhiman performing live"
           className="w-full h-full object-cover object-[70%_20%] md:object-left"
           style={{

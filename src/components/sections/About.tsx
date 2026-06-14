@@ -51,25 +51,27 @@ const About = () => {
           {/* Animated running border */}
           <svg
             className="absolute inset-0 w-full h-full"
-            viewBox="0 0 420 560"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             style={{ pointerEvents: 'none' }}
           >
             <motion.rect
-              x="1"
-              y="1"
-              width="418"
-              height="558"
+              x="0.5"
+              y="0.5"
+              width="99"
+              height="99"
               stroke="#B71C1C"
               strokeWidth="1.5"
               fill="none"
-              strokeDasharray="80 1872"
+              strokeDasharray="20 380"
+              vectorEffect="non-scaling-stroke"
               style={{
                 filter: 'drop-shadow(0 0 8px #B71C1C) drop-shadow(0 0 2px #E53935)',
               }}
               animate={{
-                strokeDashoffset: [0, -1952],
+                strokeDashoffset: [0, -400],
               }}
               transition={{
                 duration: 3.5,

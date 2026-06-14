@@ -110,10 +110,12 @@ const Booking = () => {
 
   const headerRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const formRightRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
 
   const headerInView = useInView(headerRef, { once: false });
-  const formInView = useInView(formRef, { once: false, margin: "-5%" });
+  const formInView = useInView(formRef, { once: true, margin: "-5%" });
+  const formRightInView = useInView(formRightRef, { once: true, margin: "-5%" });
   const faqInView = useInView(faqRef, { once: false, margin: "-5%" });
 
   const validate = () => {
@@ -267,10 +269,11 @@ const Booking = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT — Booking Form */}
+         {/* RIGHT — Booking Form */}
           <motion.div
+            ref={formRightRef}
             initial={{ opacity: 0, x: 30 }}
-            animate={formInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            animate={formRightInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2"
           >

@@ -45,7 +45,7 @@ const Contact = () => {
   const bottomInView = useInView(bottomRef, { once: false, margin: "-5%" });
 
   return (
-    <div className="min-h-screen bg-primary pt-24 pb-20 flex flex-col">
+    <div className="min-h-screen bg-primary pt-24 pb-20 flex flex-col overflow-x-hidden">
 
       {/* Page Header */}
       <div ref={headerRef} className="text-center mb-16 px-6">
@@ -82,7 +82,7 @@ const Contact = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto w-full px-4 md:px-8 flex flex-col gap-6">
+     <div className="max-w-4xl mx-auto w-full px-4 md:px-8 flex flex-col gap-6 overflow-x-hidden">
 
         {/* Social Cards */}
         <div ref={socialsRef} className="flex flex-col gap-4">
@@ -96,10 +96,10 @@ const Contact = () => {
               animate={socialsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.55, delay: i * 0.1 }}
               whileHover={{ scale: 1.015 }}
-              className={`group flex items-center justify-between gap-6 p-6 md:p-8 rounded-2xl border border-[#1a1a1a] bg-secondary transition-all duration-300 ${s.color}`}
+             className={`group flex items-center justify-between gap-4 p-5 md:p-8 rounded-2xl border border-[#1a1a1a] bg-secondary transition-all duration-300 ${s.color} w-full min-w-0`}
             >
-              <div className="flex items-center gap-5">
-                <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 ${s.iconColor} transition-transform duration-300 group-hover:scale-110`}>
+              <div className="flex items-center gap-4 min-w-0">
+                <div className={`w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 ${s.iconColor} transition-transform duration-300 group-hover:scale-110`}>
                   {s.icon}
                 </div>
                 <div>
@@ -160,7 +160,7 @@ const Contact = () => {
           className="relative overflow-hidden rounded-2xl border border-[#1a1a1a] bg-secondary p-8 md:p-12 text-center"
         >
           {/* Ghost text background */}
-          <p className="absolute inset-0 flex items-center justify-center font-cinzel text-[80px] md:text-[120px] font-bold text-white opacity-[0.03] select-none pointer-events-none leading-none">
+          <p className="absolute inset-0 flex items-center justify-center font-cinzel text-[60px] md:text-[120px] font-bold text-white opacity-[0.03] select-none pointer-events-none leading-none overflow-hidden whitespace-nowrap">
             BOOK
           </p>
 
