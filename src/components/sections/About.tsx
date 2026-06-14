@@ -27,12 +27,11 @@ const About = () => {
         }}
       />
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-16 gap-20">
-
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen px-6 md:px-16 gap-10 lg:gap-20 py-20">
         {/* Left — Image */}
         <motion.div
-          className="relative flex-shrink-0"
-          style={{ width: '420px', height: '560px' }}
+         className="relative flex-shrink-0 w-full max-w-[320px] md:max-w-[420px]"
+          style={{ height: '420px' }}
           initial={{ opacity: 0, x: -50 }}
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
           transition={{ duration: 1.0, ease: 'easeOut', delay: 0.2 }}
@@ -96,7 +95,7 @@ const About = () => {
 
           {/* Heading */}
           <motion.h2
-            className="font-cinzel text-cream text-5xl font-semibold leading-tight"
+            className="font-cinzel text-cream text-3xl md:text-5xl font-semibold leading-tight"
             initial={{ opacity: 0, y: 25 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
@@ -138,7 +137,7 @@ const About = () => {
 
           {/* Stats row */}
           <motion.div
-            className="flex gap-10 pt-2"
+           className="flex flex-wrap gap-6 md:gap-10 pt-2"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.75 }}

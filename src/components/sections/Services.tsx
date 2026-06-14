@@ -42,7 +42,7 @@ const Services = () => {
   return (
     <section
       ref={ref}
-      className="relative w-full bg-primary py-24 px-16"
+      className="relative w-full bg-primary py-16 px-6 md:px-16"
     >
       {/* Subtle top border */}
       <div className="absolute top-0 left-16 right-16 h-px bg-[#1a1a1a]" />
@@ -75,16 +75,13 @@ const Services = () => {
       </div>
 
       {/* Grid */}
-      <div
-        className="grid gap-6"
-        style={{ gridTemplateColumns: 'repeat(3, 1fr)', maxWidth: '1100px', margin: '0 auto' }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1100px] mx-auto">
         {services.map((service, index) => {
           const Icon = service.icon
           return (
             <motion.div
               key={index}
-              className="group relative flex flex-col items-center text-center gap-4 bg-secondary p-10 border border-[#1a1a1a] hover:border-accent transition-colors duration-500 cursor-default"
+              className="group relative flex flex-col items-center text-center gap-4 bg-secondary p-6 md:p-10 border border-[#1a1a1a] hover:border-accent transition-colors duration-500 cursor-default"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 + index * 0.1 }}

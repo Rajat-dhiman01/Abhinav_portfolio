@@ -9,7 +9,7 @@ const BookingCTA = () => {
   return (
     <section
       ref={ref}
-      className="relative w-full bg-primary overflow-hidden py-40 px-16"
+      className="relative w-full bg-primary overflow-hidden py-20 md:py-40 px-6 md:px-16"
     >
       {/* Top border */}
       <div className="absolute top-0 left-16 right-16 h-px bg-[#1a1a1a]" />
@@ -51,7 +51,7 @@ const BookingCTA = () => {
 
         {/* Heading */}
         <motion.h2
-          className="font-cinzel text-cream text-6xl font-semibold leading-tight"
+         className="font-cinzel text-cream text-4xl md:text-6xl font-semibold leading-tight"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
@@ -72,7 +72,7 @@ const BookingCTA = () => {
 
         {/* Subline */}
         <motion.p
-          className="font-cormorant text-muted text-xl leading-relaxed"
+          className="font-cormorant text-muted text-lg md:text-xl leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.45 }}

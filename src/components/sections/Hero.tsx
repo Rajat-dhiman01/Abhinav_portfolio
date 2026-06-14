@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen bg-primary overflow-hidden">
+    <section className="relative w-full h-screen bg-primary overflow-hidden" id="hero">
 
       {/* Red glow background — matches image lighting */}
       <div className="absolute inset-0">
@@ -15,9 +15,9 @@ const Hero = () => {
         />
       </div>
 
-      {/* Artist image — right side */}
+     {/* Artist image — full background on mobile, right side on desktop */}
       <motion.div
-        className="absolute right-0 top-0 h-full w-[58%]"
+        className="absolute inset-0 md:inset-auto md:right-0 md:top-0 md:h-full md:w-[58%]"
         initial={{ opacity: 0, x: 60 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
@@ -25,17 +25,18 @@ const Hero = () => {
         <img
           src="/images/abhinachero.png"
           alt="Abhinav Dhiman performing live"
-          className="w-full h-full object-cover object-left"
+          className="w-full h-full object-cover object-[70%_20%] md:object-left"
           style={{
             maskImage: 'linear-gradient(to right, transparent 0%, black 30%)',
             WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%)',
           }}
         />
+        {/* Extra dark overlay on mobile so text stays readable */}
+        <div className="absolute inset-0 bg-black/60 md:hidden" />
       </motion.div>
 
       {/* Left side text content */}
-      <div className="relative z-10 flex flex-col justify-center h-full px-16 max-w-2xl">
-
+     <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-16 max-w-2xl">
         {/* Label */}
         <motion.p
           className="font-manrope text-accent text-sm tracking-[0.3em] uppercase mb-6"
@@ -48,7 +49,7 @@ const Hero = () => {
 
         {/* Main heading */}
         <motion.h1
-          className="font-cinzel text-cream text-7xl font-semibold leading-tight mb-6"
+          className="font-cinzel text-cream text-5xl md:text-7xl font-semibold leading-tight mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.7 }}
@@ -69,7 +70,7 @@ const Hero = () => {
 
         {/* Tagline */}
         <motion.p
-          className="font-cormorant text-muted text-xl leading-relaxed mb-10"
+          className="font-cormorant text-muted text-lg md:text-xl leading-relaxed mb-10"  
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 1.0 }}
@@ -81,7 +82,7 @@ const Hero = () => {
 
         {/* Buttons */}
         <motion.div
-          className="flex gap-4"
+          className="flex flex-col sm:flex-row gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 1.1 }}

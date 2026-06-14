@@ -25,7 +25,7 @@ const RealityShows = () => {
   return (
     <section
       ref={ref}
-      className="relative w-full bg-primary py-24 px-16"
+      className="relative w-full bg-primary py-16 px-6 md:px-16"
     >
       {/* Subtle top border */}
       <div className="absolute top-0 left-16 right-16 h-px bg-[#1a1a1a]" />
@@ -58,12 +58,11 @@ const RealityShows = () => {
       </div>
 
       {/* Cards */}
-      <div className="flex justify-center gap-10">
+      <div className="flex flex-col md:flex-row justify-center gap-6 md:gap-10">
         {shows.map((show, index) => (
           <motion.div
             key={index}
-            className="relative group flex flex-col bg-secondary overflow-hidden"
-            style={{ width: '420px' }}
+            className="relative group flex flex-col bg-secondary overflow-hidden w-full md:w-[420px]"
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 + index * 0.2 }}

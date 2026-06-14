@@ -6,9 +6,7 @@ const Footer = () => {
         <footer className="relative w-full bg-secondary border-t border-[#1a1a1a]">
 
             {/* Main footer content */}
-            <div className="grid px-16 py-16 gap-12"
-                style={{ gridTemplateColumns: '2fr 1fr 1fr 1fr' }}
-            >
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-6 md:px-16 py-16 gap-10">
 
                 {/* Column 1 — Artist name + bio */}
                 <div className="flex flex-col gap-5">
@@ -129,7 +127,7 @@ const Footer = () => {
             </div>
 
             {/* Bottom bar */}
-            <div className="border-t border-[#1a1a1a] px-16 py-5 flex items-center justify-between">
+            <div className="border-t border-[#1a1a1a] px-6 md:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                 <p className="font-manrope text-muted text-xs">
                     © {new Date().getFullYear()} Abhinav Dhiman. All rights reserved.
                 </p>
