@@ -66,15 +66,24 @@ const MEDIA: MediaItem[] = [
     height: "medium",
   },
   {
-    id: 8,
-    type: "reel",
-    src: "https://res.cloudinary.com/dhysr3yfi/video/upload/v1781464754/O_Meri_Jaan_with_adnan_ahmad_rnzb09.mp4",
-    title: "O Meri Jaan",
-    height: "tall",
-  },
-  {
-    id: 9,
-    type: "photo",
+  id: 8,
+  type: "reel",
+  src: "https://res.cloudinary.com/dhysr3yfi/video/upload/v1781464754/O_Meri_Jaan_with_adnan_ahmad_rnzb09.mp4",
+  title: "O Meri Jaan",
+  height: "tall",
+},
+//sanso ki mala
+{
+  id: 13,
+  type: "reel",
+  src: "https://res.cloudinary.com/dhysr3yfi/video/upload/so_25/v1781547551/vidssave.com_Saanson_ki_mala_live___viralshort_youtubeshorts_trendingshorts_720P_wshhu4.mp4",
+  title: "Saanson Ki Mala",
+  height: "tall",
+},
+//
+{
+  id: 9,
+  type: "photo",
     src: "https://res.cloudinary.com/dhysr3yfi/image/upload/f_auto,q_auto/v1781465005/Had_a_great_gig_at_studioxodehradun_..._abhinavdhimanlive_studioxo_livemusic_3_ssvudz.jpg",
     title: "Live at Studio XO Dehradun",
     height: "tall",
