@@ -8,7 +8,7 @@ const Footer = () => {
             {/* Main footer content */}
            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-6 md:px-16 py-16 gap-10">
 
-                {/* Column 1 — Artist name + bio */}
+                {/* Column 1 - Artist name + bio */}
                 <div className="flex flex-col gap-5">
                     <div className="flex flex-col gap-1">
                         <h3 className="font-cinzel text-cream text-2xl font-semibold">
@@ -55,7 +55,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Column 2 — Quick Links */}
+                {/* Column 2 - Quick Links */}
                 <div className="flex flex-col gap-5">
                     <h4 className="font-manrope text-cream text-xs tracking-[0.25em] uppercase">
                         Quick Links
@@ -80,7 +80,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Column 3 — Services */}
+                {/* Column 3 - Services */}
                 <div className="flex flex-col gap-5">
                     <h4 className="font-manrope text-cream text-xs tracking-[0.25em] uppercase">
                         Services
@@ -104,7 +104,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Column 4 — Contact */}
+                {/* Column 4 - Contact */}
                 <div className="flex flex-col gap-5">
                     <h4 className="font-manrope text-cream text-xs tracking-[0.25em] uppercase">
                         Contact

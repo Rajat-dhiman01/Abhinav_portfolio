@@ -58,7 +58,7 @@ const Stats = () => {
         {/* Timeline */}
         <div className="relative flex flex-col" style={{ width: '380px' }}>
 
-          {/* SVG line — positioned absolutely behind the dots */}
+          {/* SVG line - positioned absolutely behind the dots */}
           <div className="absolute left-[7px] top-[10px] bottom-[10px]">
             <svg
               width="2"
@@ -101,7 +101,7 @@ const Stats = () => {
                   delay: 0.6 + index * 0.25,
                 }}
               >
-                {/* Dot — aligned with the line */}
+                {/* Dot - aligned with the line */}
                 <motion.div
                   className="w-[14px] h-[14px] rounded-full border-2 border-accent bg-primary flex-shrink-0 mt-2"
                   initial={{ scale: 0, opacity: 0 }}

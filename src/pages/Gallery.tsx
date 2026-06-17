@@ -40,7 +40,7 @@ const MEDIA: MediaItem[] = [
     type: "youtube",
     src: "https://www.youtube.com/embed/Pn468TpWFHQ?si=QqnSMulx1w3rxgje",
     youtubeId: "Pn468TpWFHQ",
-    title: "Live Performance — Abhinav Dhiman",
+    title: "Live Performance - Abhinav Dhiman",
     height: "tall",
   },
   {
@@ -62,7 +62,7 @@ const MEDIA: MediaItem[] = [
     type: "youtube",
     src: "https://www.youtube.com/embed/MPiNpkDYYXs?si=zdxZzeq2VvAgytud",
     youtubeId: "MPiNpkDYYXs",
-    title: "O Meri Jaan — Abhinav Dhiman",
+    title: "O Meri Jaan - Abhinav Dhiman",
     height: "medium",
   },
   {
@@ -168,7 +168,7 @@ const ReelCard = ({ item, index, onClick }: { item: MediaItem; index: number; on
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-      {/* Play icon — always visible on mobile, hover on desktop */}
+      {/* Play icon - always visible on mobile, hover on desktop */}
       <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${hovered || isMobile ? "opacity-100" : "opacity-0"}`}>
         <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
           <Play className="w-6 h-6 text-white fill-white ml-1" />

@@ -15,7 +15,7 @@ const Hero = () => {
         />
       </div>
 
-     {/* Artist image — full background on mobile, right side on desktop */}
+     {/* Artist image - full background on mobile, right side on desktop */}
       <motion.div
         className="absolute inset-0 md:inset-auto md:right-0 md:top-0 md:h-full md:w-[58%]"
         initial={{ opacity: 0, x: 60 }}

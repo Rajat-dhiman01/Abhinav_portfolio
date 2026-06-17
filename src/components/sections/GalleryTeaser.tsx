@@ -125,7 +125,7 @@ const GalleryTeaser = () => {
         />
       </div>
 
-      {/* Reel Previews — desktop 3 col, mobile single scroll */}
+      {/* Reel Previews - desktop 3 col, mobile single scroll */}
       <div className="hidden md:flex gap-4 items-start max-w-5xl mx-auto">
         {PREVIEW_REELS.map((reel, index) => (
           <ReelPreview
@@ -138,7 +138,7 @@ const GalleryTeaser = () => {
         ))}
       </div>
 
-      {/* Mobile — horizontal scroll */}
+      {/* Mobile - horizontal scroll */}
       <div className="flex md:hidden gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none">
         {PREVIEW_REELS.map((reel, index) => (
           <motion.div

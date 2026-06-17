@@ -14,7 +14,7 @@ const BookingCTA = () => {
       {/* Top border */}
       <div className="absolute top-0 left-16 right-16 h-px bg-[#1a1a1a]" />
 
-      {/* Background red glow — centered */}
+      {/* Background red glow - centered */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -77,7 +77,7 @@ const BookingCTA = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.45 }}
         >
-          Whether it's a resort, a wedding, or a corporate evening —
+          Whether it's a resort, a wedding, or a corporate evening -
           <br />
           let's create something unforgettable.
         </motion.p>

@@ -197,7 +197,7 @@ const Booking = () => {
       <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-          {/* LEFT — Info Cards */}
+          {/* LEFT - Info Cards */}
           <motion.div
             ref={formRef}
             initial={{ opacity: 0, x: -30 }}
@@ -208,7 +208,7 @@ const Booking = () => {
             <div>
               <h2 className="font-cinzel text-cream text-xl mb-2">Get In Touch</h2>
               <p className="font-manrope text-muted text-sm leading-relaxed">
-                Whether it&apos;s an intimate cafe evening or a grand wedding celebration — let&apos;s make it memorable.
+                Whether it&apos;s an intimate cafe evening or a grand wedding celebration - let&apos;s make it memorable.
               </p>
             </div>
 
@@ -269,7 +269,7 @@ const Booking = () => {
             </div>
           </motion.div>
 
-         {/* RIGHT — Booking Form */}
+         {/* RIGHT - Booking Form */}
           <motion.div
             ref={formRightRef}
             initial={{ opacity: 0, x: 30 }}

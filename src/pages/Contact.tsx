@@ -170,7 +170,7 @@ const Contact = () => {
               Send a Booking Inquiry
             </h2>
             <p className="font-manrope text-muted text-sm md:text-base max-w-md mx-auto leading-relaxed mb-8">
-              Whether it&apos;s a resort, wedding, or corporate evening — Abhinav responds within 24 hours.
+              Whether it&apos;s a resort, wedding, or corporate evening - Abhinav responds within 24 hours.
             </p>
             <button
               onClick={() => navigate("/booking")}
